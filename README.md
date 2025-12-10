@@ -34,15 +34,15 @@
 ---
 
 ## Структура проекта
-Controller/ — контроллер
-View/ — GUI и виджет отрисовки
-model/ — парсер .obj, математика, affine-трансформации
-tests/ — модульные тесты (GTest)
-dvi/ — LaTeX документация
-objModels/ — примеры .obj моделей
-main.cpp — точка входа
-project.pro — Qt project-файл
-Makefile — сборка/тесты/форматирование/дистрибутив
+- Controller/ — контроллер
+- View/ — GUI и виджет отрисовки
+- model/ — парсер .obj, математика, affine-трансформации
+- tests/ — модульные тесты (GTest)
+- dvi/ — LaTeX документация
+- objModels/ — примеры .obj моделей
+- main.cpp — точка входа
+- project.pro — Qt project-файл
+- Makefile — сборка/тесты/форматирование/дистрибутив
 
 ## Сборка и запуск
 
