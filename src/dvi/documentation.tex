@@ -1,0 +1,114 @@
+\documentclass{article}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage[russian]{babel} 
+\usepackage{fontenc}
+\usepackage[T2A]{fontenc} 
+\usepackage{times} 
+\usepackage{helvet} 
+\usepackage{courier} 
+
+\usepackage{geometry}
+\geometry{top=0cm, left=1cm, right=1cm, bottom=1cm, includeheadfoot}
+
+\usepackage{titlesec}
+\titlespacing*{\section}{0pt}{0pt}{0pt}
+\titlespacing*{\subsection}{0pt}{0pt}{0pt}
+\let\oldnewpage\newpage
+\renewcommand{\newpage}{\oldnewpage}
+
+\begin{document}
+
+\title{Документация для проекта 3DViewer v2.0}
+\date{}
+\author{}
+\maketitle
+
+\section{Структура проекта}
+
+\subsection{Модель (Model) (\texttt{src/model/})}
+
+\begin{itemize}[label=--]
+    \item Классы для представления 3D-модели: вершины, грани, матрицы преобразований
+    \item Парсер файлов формата OBJ
+    \item Реализация аффинных преобразований (перемещение, поворот, масштабирование)
+\end{itemize}
+
+\subsection{Контроллер (Controller) (\texttt{src/controller/})}
+\begin{itemize}[label=--]
+   \item Тонкие контроллеры, связывающие модель и представление
+   \item Обработка пользовательского ввода и передача команд модели
+   \item Реализация паттернов проектирования (Фасад, Команда, Стратегия)
+\end{itemize}
+
+\subsection{Представление (View) (\texttt{src/view/})}
+\begin{itemize}[label=--]
+    \item Графический интерфейс пользователя на базе Qt
+    \item Визуализация 3D-модели с помощью OpenGL
+    \item Элементы управления для преобразований модели
+    \item Отображение информации о модели
+\end{itemize}
+
+\section{Сборка проекта}
+Проект использует систему сборки \texttt{make} с Makefile, включающим следующие цели:
+
+\begin{itemize}
+    \item \texttt{all}: Сборка проекта.
+    \item \texttt{install}: Установка программы в систему.
+    \item \texttt{uninstall}: Удаление программы из системы.
+    \item \texttt{clean}: Очистка временных файлов и папок.
+    \item \texttt{dvi}: Создание файла DVI.
+    \item \texttt{dist}: Создание архива, содержащего необходимые файлы для сборки и использования программы.
+    \item \texttt{clang check}: Проверка на необходимость форматирования кода.
+    \item \texttt{clang format}: Форматирование кода.
+
+    \item \texttt{rebuild}: Удаление программы и новая установка.
+\end{itemize}
+
+\section{Инструкции по установке и запуску}
+
+\begin{enumerate}
+    \item \textbf{Установка зависимостей:}
+        \begin{itemize}
+            \item Установите компилятор g++ с поддержкой C++20 для сборки проекта.
+            \item Установите библиотеку Qt6.
+	  \item Установите библиотеки для тестирования: gtest.
+        \end{itemize}
+    \item \textbf{Установка:}
+        \begin{itemize}
+            \item Выполните \texttt{make install} для установки программы.
+        \end{itemize}
+    \item \textbf{Запуск:}
+        \begin{itemize}
+            \item Выполните \texttt{make run} для запуска программы.
+        \end{itemize}
+\end{enumerate}
+
+\section{Использование программы 3DViewer}
+
+\begin{enumerate}
+	\item \textbf{Загрузка модели:}
+	   \begin{itemize}
+		\item Нажмите кнопку "Open File" для выбора файла .obj
+		\item Программа поддерживает списки вершин и поверхностей
+		\item Название файла отображается в интерфейсе
+	\end{itemize}
+\item \textbf{Просмотр информации о модели:}
+    \begin{itemize}
+        \item Интерфейс отображает количество вершин и рёбер
+        \item Поддерживаются модели от 100 до 1,000,000 вершин
+    \end{itemize}
+
+\item \textbf{Преобразования модели:}
+    \begin{itemize}
+        \item \textbf{Перемещение}: Введите значения для осей X, Y, Z
+        \item \textbf{Поворот}: Укажите углы поворота вокруг осей
+        \item \textbf{Масштабирование}: Задайте коэффициент масштабирования
+    \end{itemize}
+\end{enumerate}
+
+\section{Тестирование}
+
+Проект включает в себя unit-тесты с использованием библиотеки \texttt{gtest}.
+
+\end{document}
